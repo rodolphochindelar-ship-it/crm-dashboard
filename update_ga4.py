@@ -78,11 +78,17 @@ def run():
                     continue
 
                 sm_lower = source_medium.lower()
-                is_crm = (('insider' in sm_lower and 'insite' not in sm_lower) or 
-                          'firebase' in sm_lower or 
-                          'pushnews' in sm_lower)
-                
+                is_insider = 'insider' in sm_lower and 'insite' not in sm_lower
+                is_crm_other = 'firebase' in sm_lower or 'pushnews' in sm_lower
+                is_crm = is_insider or is_crm_other
+
                 origem_agrupada = "CRM" if is_crm else "Outros Canais"
+
+                # Aglomerar a origem/mídia conforme o pedido
+                if is_insider:
+                    source_medium = "Insider"
+                elif is_crm_other:
+                    source_medium = "CRM"
 
                 csv_rows.append([
                     prop_name,
