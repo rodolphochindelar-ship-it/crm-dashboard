@@ -10,8 +10,8 @@ if os.path.exists(CREDENTIAL_PATH):
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = CREDENTIAL_PATH
 
 PROPERTY_IDS = {
-    "Site": "256859064",
-    "App": "326912205"
+    "Site": "326912205",
+    "App": "256859064"
 }
 
 def is_valid_row(row):
