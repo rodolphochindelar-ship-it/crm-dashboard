@@ -31,18 +31,15 @@ def run():
         print(e)
         return
 
-    # Coletamos desde o inicio de 2025 até 'today'
-    start_date = "2025-01-01"
-    end_date = "today"
-
-    csv_rows = []
-    # Cabeçalho esperado pelo Dashboard
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credentials_path
+    client = BetaAnalyticsDataClient()
+    
     headers = [
         "Ponto de Venda", "Data", "Origem / mídia da sessão", 
         "Campanha da sessão", "Sessões", "Transações", "Receita",
         "Origem Agrupada"
     ]
-    csv_rows.append(headers)
+    csv_rows = []
 
     for prop_name, prop_id in PROPERTY_IDS.items():
         print(f"Buscando dados em: {prop_name} ({prop_id})...")
@@ -57,25 +54,33 @@ def run():
             metrics=[
                 Metric(name="sessions"),
                 Metric(name="transactions"),
-                Metric(name="totalRevenue")
+                Metric(name="purchaseRevenue")
             ],
-            date_ranges=[DateRange(start_date=start_date, end_date=end_date)],
+            date_ranges=[DateRange(start_date="2025-01-01", end_date="today")],
+            limit=250000
         )
         
         try:
             response = client.run_report(request)
+            print(f"[{prop_name}] Linhas retornadas: {len(response.rows)}")
+            
             for row in response.rows:
-                date_val = format_date(row.dimension_values[0].value)
+                if not is_valid_row(row):
+                    continue
+
+                date_val = row.dimension_values[0].value
                 source_medium = row.dimension_values[1].value
                 campaign = row.dimension_values[2].value
+                sessions = row.metric_values[0].value
+                transactions = row.metric_values[1].value
+                revenue = row.metric_values[2].value
                 
-                sessions = int(row.metric_values[0].value)
-                transactions = int(row.metric_values[1].value)
-                revenue = float(row.metric_values[2].value)
-                
-                # Ignora linhas com zero em tudo pra manter o CSV leve
-                if sessions == 0 and transactions == 0 and revenue == 0:
-                    continue
+                # Tratar (not set) e vazios
+                if source_medium in ["(not set)", "", None]:
+                    source_medium = "(not set)"
+                    
+                if campaign in ["(not set)", "", None]:
+                    campaign = "(not set)"
 
                 sm_lower = source_medium.lower()
                 is_insider = 'insider' in sm_lower and 'insite' not in sm_lower
@@ -101,18 +106,16 @@ def run():
                     origem_agrupada
                 ])
                 
-            print(f"Sucesso: Extraídas {len(response.rows)} linhas de {prop_name}.")
-            
         except Exception as e:
-            print(f"Erro na extração de {prop_name}: {e}")
+            print(f"Erro na propriedade {prop_name}: {e}")
 
-    # Salva o arquivo CSV
     output_file = "dados_dashboard.csv"
     try:
         with open(output_file, 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
+            writer.writerow(headers)
             writer.writerows(csv_rows)
-        print(f"\nExtração concluída! Arquivo {output_file} gerado com sucesso.")
+        print(f"Processo concluído! Arquivo {output_file} gerado com sucesso.")
     except Exception as e:
         print(f"Erro ao salvar CSV: {e}")
 
