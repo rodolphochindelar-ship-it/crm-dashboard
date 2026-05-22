@@ -23,7 +23,7 @@ def is_valid_row(row):
         return False
 
 def run():
-    print("Iniciando extração do GA4...")
+    print("Iniciando extraÃ§Ã£o do GA4...")
     try:
         client = BetaAnalyticsDataClient()
     except Exception as e:
@@ -32,8 +32,8 @@ def run():
         return
         
     headers = [
-        "Ponto de Venda", "Data", "Origem / mídia da sessão", 
-        "Campanha da sessão", "Sessões", "Transações", "Receita",
+        "Ponto de Venda", "Data", "Origem / mÃ­dia da sessÃ£o", 
+        "Campanha da sessÃ£o", "SessÃµes", "TransaÃ§Ãµes", "Receita",
         "Origem Agrupada"
     ]
     csv_rows = []
@@ -65,13 +65,13 @@ def run():
             try:
                 response = client.run_report(request)
                 num_rows = len(response.rows)
-                print(f"[{prop_name}] Bloco extraído (offset {offset}): {num_rows} linhas")
+                print(f"[{prop_name}] Bloco extraÃ­do (offset {offset}): {num_rows} linhas")
                 
                 for row in response.rows:
                     if not is_valid_row(row):
                         continue
 
-                    # O GA4 retorna a data no formato YYYYMMDD, então formatamos
+                    # O GA4 retorna a data no formato YYYYMMDD, entÃ£o formatamos
                     raw_date = row.dimension_values[0].value
                     date_val = f"{raw_date[0:4]}-{raw_date[4:6]}-{raw_date[6:8]}"
                     
@@ -89,17 +89,31 @@ def run():
                         campaign = "(not set)"
 
                     sm_lower = source_medium.lower()
-                    is_insider = 'insider' in sm_lower and 'insite' not in sm_lower
-                    is_crm_other = 'firebase' in sm_lower or 'pushnews' in sm_lower
-                    is_crm = is_insider or is_crm_other
+                    
+                    # Definir Origem Agrupada (Tipo de Canal)
+                    origem_agrupada = "Others"
+                    
+                    if sm_lower in ["(not set)", "", "none"] or "(direct) / (none)" in sm_lower:
+                        origem_agrupada = "Direct"
+                    elif "insider" in sm_lower or "architect" in sm_lower or "email" in sm_lower or "notification" in sm_lower or "web_push" in sm_lower or "pushnews" in sm_lower or "mobile_messaging" in sm_lower or "sms" in sm_lower or "firebase" in sm_lower:
+                        origem_agrupada = "CRM"
+                    elif "insite" in sm_lower or "emkt" in sm_lower or "whatsapp" in sm_lower:
+                        origem_agrupada = "Others"
+                    elif "cpc" in sm_lower or "display" in sm_lower or "paid" in sm_lower:
+                        origem_agrupada = "Paid"
+                    elif "organic" in sm_lower:
+                        origem_agrupada = "Organic"
+                    elif "referral" in sm_lower:
+                        origem_agrupada = "Referral"
+                    elif "blog" in sm_lower:
+                        origem_agrupada = "Blog"
 
-                    origem_agrupada = "CRM" if is_crm else "Outros Canais"
-
-                    # Aglomerar a origem/mídia conforme o pedido
-                    if is_insider:
-                        source_medium = "Insider"
-                    elif is_crm_other:
-                        source_medium = "CRM"
+                    # Se for CRM, nÃ³s padronizamos o nome da mÃ­dia como Insider ou CRM (para manter a visÃ£o limpa)
+                    if origem_agrupada == "CRM":
+                        if "insider" in sm_lower and "insite" not in sm_lower:
+                            source_medium = "Insider"
+                        else:
+                            source_medium = "CRM"
 
                     csv_rows.append([
                         prop_name,
@@ -112,7 +126,7 @@ def run():
                         origem_agrupada
                     ])
                     
-                # Se o número de linhas retornadas for menor que o limite, chegamos ao fim
+                # Se o nÃºmero de linhas retornadas for menor que o limite, chegamos ao fim
                 if num_rows < limit_per_page:
                     break
                     
@@ -128,7 +142,7 @@ def run():
             writer = csv.writer(f)
             writer.writerow(headers)
             writer.writerows(csv_rows)
-        print(f"Processo concluído! Arquivo {output_file} gerado com sucesso.")
+        print(f"Processo concluÃ­do! Arquivo {output_file} gerado com sucesso.")
     except Exception as e:
         print(f"Erro ao salvar CSV: {e}")
 
