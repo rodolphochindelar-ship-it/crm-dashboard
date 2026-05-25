@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard CRM â€” Grupo Guanabara</title>
+  <title>Dashboard CRM — Grupo Guanabara</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
@@ -614,7 +614,7 @@
       <div class="logo">GG</div>
       <div>
         <div class="header-title">Dashboard CRM</div>
-        <div class="header-sub">Grupo Guanabara Â· SessÃµes &amp; Receita</div>
+        <div class="header-sub">Grupo Guanabara · Sessões &amp; Receita</div>
       </div>
     </div>
     <span class="status-badge" id="status-txt">Carregando...</span>
@@ -634,8 +634,8 @@
       <div class="filter-group"><label>Comparar com</label>
         <select id="f-cmp">
           <option value="none">Sem comparativo</option>
-          <option value="mom">MoM â€” MÃªs anterior</option>
-          <option value="yoy">YoY â€” Ano anterior</option>
+          <option value="mom">MoM — Mês anterior</option>
+          <option value="yoy">YoY — Ano anterior</option>
         </select>
       </div>
       <div class="filter-sep"></div>
@@ -650,33 +650,33 @@
         </div>
         <div class="ms-dropdown" id="ms-list"></div>
       </div>
-      <div class="filter-group"><label>Data inÃ­cio</label><input type="date" id="f-inicio" value="2025-01-01" /></div>
+      <div class="filter-group"><label>Data início</label><input type="date" id="f-inicio" value="2025-01-01" /></div>
       <div class="filter-group"><label>Data fim</label><input type="date" id="f-fim" value="2026-05-17" /></div>
       <button type="button" class="cmp-btn" onclick="resetFilters()" style="align-self: flex-end; height: 36px;">Redefinir Filtros</button>
     </div>
 
     <!-- KPIs linha 1 -->
-    <p class="section-title">VisÃ£o geral â€” KPIs Globais</p>
+    <p class="section-title">Visão geral — KPIs Globais</p>
     <div class="kpi-grid">
       <div class="kpi">
         <div class="kpi-label" id="lbl-kpi-rec">Receita Total</div>
-        <div class="kpi-value" id="k-receita-crm">â€”</div>
+        <div class="kpi-value" id="k-receita-crm">—</div>
       </div>
       <div class="kpi">
         <div class="kpi-label" id="lbl-kpi-share">Share %</div>
-        <div class="kpi-value" id="k-share-crm">â€”</div>
+        <div class="kpi-value" id="k-share-crm">—</div>
       </div>
       <div class="kpi">
-        <div class="kpi-label">SessÃµes</div>
-        <div class="kpi-value" id="k-sessoes">â€”</div>
+        <div class="kpi-label">Sessões</div>
+        <div class="kpi-value" id="k-sessoes">—</div>
       </div>
       <div class="kpi">
-        <div class="kpi-label">TransaÃ§Ãµes</div>
-        <div class="kpi-value" id="k-trans">â€”</div>
+        <div class="kpi-label">Transações</div>
+        <div class="kpi-value" id="k-trans">—</div>
       </div>
       <div class="kpi">
-        <div class="kpi-label">ConversÃ£o %</div>
-        <div class="kpi-value" id="k-conv">â€”</div>
+        <div class="kpi-label">Conversão %</div>
+        <div class="kpi-value" id="k-conv">—</div>
       </div>
     </div>
 
@@ -684,30 +684,30 @@
     <div class="kpi-grid" style="margin-bottom:1.5rem">
       <div class="kpi">
         <div class="kpi-label">Receita Insider</div>
-        <div class="kpi-value" id="k-receita-insider">â€”</div>
+        <div class="kpi-value" id="k-receita-insider">—</div>
       </div>
       <div class="kpi">
-        <div class="kpi-label">ConversÃ£o Insider</div>
-        <div class="kpi-value" id="k-conv-insider">â€”</div>
+        <div class="kpi-label">Conversão Insider</div>
+        <div class="kpi-value" id="k-conv-insider">—</div>
       </div>
       <div class="kpi">
-        <div class="kpi-label">SessÃµes Insider</div>
-        <div class="kpi-value" id="k-sess-insider">â€”</div>
+        <div class="kpi-label">Sessões Insider</div>
+        <div class="kpi-value" id="k-sess-insider">—</div>
       </div>
       <div class="kpi">
-        <div class="kpi-label">TransaÃ§Ãµes Insider</div>
-        <div class="kpi-value" id="k-trans-insider">â€”</div>
+        <div class="kpi-label">Transações Insider</div>
+        <div class="kpi-value" id="k-trans-insider">—</div>
       </div>
       <div class="kpi">
-        <div class="kpi-label">Ticket mÃ©dio</div>
-        <div class="kpi-value" id="k-ticket">â€”</div>
+        <div class="kpi-label">Ticket médio</div>
+        <div class="kpi-value" id="k-ticket">—</div>
       </div>
     </div>
 
-    <!-- VisÃ£o geral -->
-    <p class="section-title">VisÃ£o geral</p>
+    <!-- Visão geral -->
+    <p class="section-title">Visão geral</p>
     <div class="card">
-      <h3>Receita diÃ¡ria (Ãrea)</h3>
+      <h3>Receita diária (Área)</h3>
       <div class="legend" id="leg-diario"></div>
       <div style="position:relative;width:100%;height:220px"><canvas id="chart-diario"></canvas></div>
     </div>
@@ -718,7 +718,7 @@
         <div style="position:relative;width:100%;height:200px"><canvas id="chart-canal"></canvas></div>
       </div>
       <div class="card">
-        <h3>SessÃµes por ponto de venda</h3>
+        <h3>Sessões por ponto de venda</h3>
         <div class="legend" id="leg-pdv"></div>
         <div style="position:relative;width:100%;height:200px"><canvas id="chart-pdv"></canvas></div>
       </div>
@@ -728,8 +728,8 @@
       <div style="position:relative;width:100%;height:280px"><canvas id="chart-origem"></canvas></div>
     </div>
 
-    <!-- EvoluÃ§Ã£o diÃ¡ria -->
-    <p class="section-title">EvoluÃ§Ã£o diÃ¡ria (Linhas)</p>
+    <!-- Evolução diária -->
+    <p class="section-title">Evolução diária (Linhas)</p>
     <div class="card">
       <h3>Receita por dia (R$)</h3>
       <div class="legend" id="leg-ev-receita"></div>
@@ -737,7 +737,7 @@
     </div>
     <div class="grid-2">
       <div class="card">
-        <h3>Taxa de conversÃ£o por dia (%)</h3>
+        <h3>Taxa de conversão por dia (%)</h3>
         <div class="legend" id="leg-ev-conv"></div>
         <div style="position:relative;width:100%;height:220px"><canvas id="chart-ev-conv"></canvas></div>
       </div>
@@ -749,38 +749,38 @@
     </div>
     <div class="grid-2">
       <div class="card">
-        <h3>SessÃµes por dia</h3>
+        <h3>Sessões por dia</h3>
         <div class="legend" id="leg-ev-sess"></div>
         <div style="position:relative;width:100%;height:200px"><canvas id="chart-ev-sess"></canvas></div>
       </div>
       <div class="card">
-        <h3>TransaÃ§Ãµes por dia</h3>
+        <h3>Transações por dia</h3>
         <div class="legend" id="leg-ev-trans"></div>
         <div style="position:relative;width:100%;height:200px"><canvas id="chart-ev-trans"></canvas></div>
       </div>
     </div>
 
-    <!-- Comparativo de perÃ­odos -->
-    <p class="section-title">Comparativo de perÃ­odos</p>
+    <!-- Comparativo de períodos -->
+    <p class="section-title">Comparativo de períodos</p>
     <div class="cmp-panel">
       <h3>Configurar comparativo</h3>
 
       <div class="cmp-preset-row">
-        <button class="cmp-btn" data-preset="mom">MoM â€” MÃªs anterior</button>
-        <button class="cmp-btn" data-preset="yoy">YoY â€” Mesmo perÃ­odo ano anterior</button>
+        <button class="cmp-btn" data-preset="mom">MoM — Mês anterior</button>
+        <button class="cmp-btn" data-preset="yoy">YoY — Mesmo período ano anterior</button>
         <button class="cmp-btn" data-preset="lastweek">Semana anterior</button>
         <button class="cmp-btn active" data-preset="custom">Personalizado</button>
       </div>
 
       <div class="cmp-filters">
-        <div class="fg"><label style="color:var(--cmpA)">â–  PerÃ­odo A â€” inÃ­cio</label><input type="date" id="cmp-a-ini"
+        <div class="fg"><label style="color:var(--cmpA)">■ Período A — início</label><input type="date" id="cmp-a-ini"
             value="2026-04-01" /></div>
-        <div class="fg"><label style="color:var(--cmpA)">PerÃ­odo A â€” fim</label><input type="date" id="cmp-a-fim"
+        <div class="fg"><label style="color:var(--cmpA)">Período A — fim</label><input type="date" id="cmp-a-fim"
             value="2026-04-30" /></div>
         <div style="display:flex;align-items:flex-end;padding-bottom:4px;color:var(--text3);font-size:18px">vs</div>
-        <div class="fg"><label style="color:var(--cmpB)">â–  PerÃ­odo B â€” inÃ­cio</label><input type="date" id="cmp-b-ini"
+        <div class="fg"><label style="color:var(--cmpB)">■ Período B — início</label><input type="date" id="cmp-b-ini"
             value="2026-03-01" /></div>
-        <div class="fg"><label style="color:var(--cmpB)">PerÃ­odo B â€” fim</label><input type="date" id="cmp-b-fim"
+        <div class="fg"><label style="color:var(--cmpB)">Período B — fim</label><input type="date" id="cmp-b-fim"
             value="2026-03-31" /></div>
         <div class="fg"><label>PDV</label>
           <select id="cmp-pdv">
@@ -793,29 +793,29 @@
 
       <div class="period-labels">
         <span class="dot" style="background:var(--cmpA)"></span>
-        <span id="cmp-label-a" style="color:var(--cmpA)">PerÃ­odo A</span>
+        <span id="cmp-label-a" style="color:var(--cmpA)">Período A</span>
         <span style="color:var(--text3)">vs</span>
         <span class="dot" style="background:var(--cmpB)"></span>
-        <span id="cmp-label-b" style="color:var(--cmpB)">PerÃ­odo B</span>
+        <span id="cmp-label-b" style="color:var(--cmpB)">Período B</span>
       </div>
 
       <div class="cmp-kpi-grid" id="cmp-kpis"></div>
 
       <div class="grid-2">
         <div class="cmp-card">
-          <div class="cmp-card-title">Receita diÃ¡ria (R$)</div>
+          <div class="cmp-card-title">Receita diária (R$)</div>
           <div class="legend" id="leg-cmp-receita"></div>
           <div style="position:relative;height:200px"><canvas id="chart-cmp-receita"></canvas></div>
         </div>
         <div class="cmp-card">
-          <div class="cmp-card-title">ConversÃ£o (%)</div>
+          <div class="cmp-card-title">Conversão (%)</div>
           <div class="legend" id="leg-cmp-conv"></div>
           <div style="position:relative;height:200px"><canvas id="chart-cmp-conv"></canvas></div>
         </div>
       </div>
       <div class="grid-2" style="margin-top:12px">
         <div class="cmp-card">
-          <div class="cmp-card-title">SessÃµes diÃ¡rias</div>
+          <div class="cmp-card-title">Sessões diárias</div>
           <div class="legend" id="leg-cmp-sess"></div>
           <div style="position:relative;height:200px"><canvas id="chart-cmp-sess"></canvas></div>
         </div>
@@ -827,12 +827,12 @@
       </div>
     </div>
 
-    <div class="footer">Atualizado automaticamente a partir do Google Sheets Â· Grupo Guanabara</div>
+    <div class="footer">Atualizado automaticamente a partir do Google Sheets · Grupo Guanabara</div>
   </div>
 
-    <script>
+  <script>
     const CSV_URL = './dados_dashboard.csv';
-    const GRP_COLORS = { Direct: '#a078f0', CRM: '#1fd196', Paid: '#f07040', Organic: '#f0a030', Referral: '#40f0d0', Blog: '#f040a0', Others: '#4b8ef5' };
+    const GRP_COLORS = { Direct: '#a078f0', 'Not Set': '#8a8e96', CRM: '#1fd196', Paid: '#f07040', Organic: '#f0a030', Referral: '#40f0d0', Blog: '#f040a0', Others: '#4b8ef5' };
     const palette = ['#e05070', '#e0b040', '#40e0c0', '#9050e0', '#f06090', '#70c040', '#8090a0'];
     const C = { crm: '#1fd196', outros: '#4b8ef5', site: '#a078f0', app: '#f07040', cmpA: '#1fd196', cmpB: '#f0a030' };
     const GRID = 'rgba(255,255,255,0.06)', TICK = '#555960';
@@ -982,7 +982,7 @@
       setKpi('k-share-crm', kpiA.share, v => v.toFixed(2) + '%', 'share', kpiB);
       setKpi('k-sessoes', kpiA.sess, fmt, 'sess', kpiB);
       setKpi('k-trans', kpiA.trans, fmt, 'trans', kpiB);
-      setKpi('k-conv', kpiA.conv, v => v > 0 ? v.toFixed(2) + '%' : 'â€”', 'conv', kpiB);
+      setKpi('k-conv', kpiA.conv, v => v > 0 ? v.toFixed(2) + '%' : '—', 'conv', kpiB);
 
       const calcInsider = (dfilt) => {
         const dIns = dfilt.filter(r => isInsider(r));
@@ -998,9 +998,9 @@
       setKpi('k-conv-insider', insA.conv, v => v.toFixed(2) + '%', 'conv', insB);
       setKpi('k-sess-insider', insA.sess, fmt, 'sess', insB);
       setKpi('k-trans-insider', insA.trans, fmt, 'trans', insB);
-      setKpi('k-ticket', kpiA.tkt, v => v > 0 ? fmtR(v) : 'â€”', 'tkt', kpiB);
+      setKpi('k-ticket', kpiA.tkt, v => v > 0 ? fmtR(v) : '—', 'tkt', kpiB);
 
-      // --- GrÃ¡ficos VisÃ£o Geral ---
+      // --- Gráficos Visão Geral ---
       const { byDate, dates } = buildByDate(data);
       
       function buildDatasets(dates, byDate, measureFn, dash) {
@@ -1130,7 +1130,7 @@
 
     }
 
-    /* â”€â”€ Comparativo â”€â”€ */
+    /* ── Comparativo ── */
     function getPeriodData(ini, fim, pdv) {
       return rawData.filter(r => {
         if (pdv && r.pdv !== pdv) return false;
@@ -1150,9 +1150,9 @@
       const fields = [
         { key: 'receita', label: 'Receita total', fmt: fmtR },
         { key: 'share', label: 'Share %', fmt: v => v.toFixed(1) + '%' },
-        { key: 'sessoes', label: 'SessÃµes', fmt: fmt },
-        { key: 'trans', label: 'TransaÃ§Ãµes', fmt: fmt },
-        { key: 'conv', label: 'ConversÃ£o', fmt: v => v.toFixed(2) + '%' }
+        { key: 'sessoes', label: 'Sessões', fmt: fmt },
+        { key: 'trans', label: 'Transações', fmt: fmt },
+        { key: 'conv', label: 'Conversão', fmt: v => v.toFixed(2) + '%' }
       ];
       document.getElementById('cmp-kpis').innerHTML = fields.map(f => {
         const va = kA[f.key], vb = kB[f.key], d = delta(va, vb);
@@ -1214,7 +1214,7 @@
       charts['cmp-share'] = new Chart(document.getElementById('chart-cmp-share'), { type: 'line', data: { labels, datasets: mkDs('share', 'share') }, options: cmpOpts(v => v.toFixed(1) + '%', { scales: { x: { ticks: { maxTicksLimit: 8, color: TICK, font: TFS }, grid: { display: false } }, y: { min: 0, max: 100, ticks: { callback: v => v + '%', color: TICK, font: TFS }, grid: { color: GRID } } } }) });
     }
 
-    function fmtLabel(ini, fim) { const f = d => d ? d.split('-').reverse().join('/') : '?'; return `${f(ini)} â€“ ${f(fim)}` }
+    function fmtLabel(ini, fim) { const f = d => d ? d.split('-').reverse().join('/') : '?'; return `${f(ini)} – ${f(fim)}` }
 
     function updateComparativo() {
       if (!rawData.length) return;
@@ -1274,7 +1274,7 @@
       updateComparativo();
     }
 
-    /* â”€â”€ Eventos â”€â”€ */
+    /* ── Eventos ── */
     ['f-pdv', 'f-cmp'].forEach(id => {
       document.getElementById(id).addEventListener('change', updateAll);
     });
@@ -1304,7 +1304,7 @@
       });
     });
 
-    /* â”€â”€ Carga inicial â”€â”€ */
+    /* ── Carga inicial ── */
     function loadData() {
       document.getElementById('status-txt').textContent = 'Carregando...';
       Papa.parse(CSV_URL, {
@@ -1316,10 +1316,10 @@
             date: findKey(sample, ['Data Ajustada', 'Data ajustada', 'Data']),
             canal: findKey(sample, ['Origem Agrupada', 'Origem agrupada']),
             origem: findKey(sample, ['Origem Resumida', 'Origem resumida']),
-            campanha: findKey(sample, ['Campanha da sessÃ£o', 'Campanha', 'Campaign']),
-            midia: findKey(sample, ['Origem / mÃ­dia da sessÃ£o', 'Origem / midia', 'Source / Medium']),
-            sessoes: findKey(sample, ['SessÃƒÂµes', 'SessÃµes', 'Sessoes', 'Sessions']),
-            trans: findKey(sample, ['TransaÃ§Ãµes', 'Transacoes', 'TransaÃƒÂ§ÃƒÂµes', 'Transa\u00e7\u00f5es']),
+            campanha: findKey(sample, ['Campanha da sessão', 'Campanha', 'Campaign']),
+            midia: findKey(sample, ['Origem / mídia da sessão', 'Origem / midia', 'Source / Medium']),
+            sessoes: findKey(sample, ['Sessões', 'Sessões', 'Sessoes', 'Sessions']),
+            trans: findKey(sample, ['Transações', 'Transacoes', 'Transações', 'Transações']),
             receita: findKey(sample, ['Receita', 'receita'])
           };
           rawData = res.data.map(r => ({
@@ -1334,7 +1334,7 @@
             receita: parseNum(r[K.receita])
           })).filter(r => r.date && r.date.length >= 8);
           const ultimo = rawData.map(r => r.date).sort().reverse()[0] || '';
-          document.getElementById('status-txt').textContent = fmt(rawData.length) + ' linhas Â· Ãºltimo: ' + (ultimo || 'â€”');
+          document.getElementById('status-txt').textContent = fmt(rawData.length) + ' linhas · último: ' + (ultimo || '—');
 
           // Initialize comparativo dates
           document.getElementById('cmp-a-ini').value = document.getElementById('f-inicio').value;
@@ -1359,7 +1359,7 @@
           if (list) {
             let html = `
               <div style="padding:8px; border-bottom:1px solid var(--border); display:flex; gap:5px; flex-direction:column; position:sticky; top:0; background:var(--bg2); z-index:10;">
-                <button type="button" class="cmp-btn" onclick="document.querySelectorAll('#ms-list input').forEach(cb => cb.checked = false); updateAll();" style="width:100%; border-color:var(--border2);">Limpar SeleÃ§Ã£o</button>
+                <button type="button" class="cmp-btn" onclick="document.querySelectorAll('#ms-list input').forEach(cb => cb.checked = false); updateAll();" style="width:100%; border-color:var(--border2);">Limpar Seleção</button>
                 <button type="button" class="cmp-btn" onclick="document.getElementById('ms-list').classList.remove('open');" style="width:100%; background:var(--accent); color:#000; border-color:var(--accent); font-weight:500;">OK / Fechar</button>
               </div>
             `;
@@ -1383,7 +1383,6 @@
     }
     loadData();
   </script>
-
 </body>
 
 </html>
