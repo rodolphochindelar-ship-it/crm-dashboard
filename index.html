@@ -877,7 +877,7 @@
 
     function dc(id) { if (charts[id]) { charts[id].destroy(); delete charts[id]; } }
     function leg(id, items) { const el = document.getElementById(id); if (!el) return; el.innerHTML = items.map(i => `<span><span class="legend-dot" style="background:${i.color}"></span>${i.label}</span>`).join('') }
-    function lineOpts(yFmt) { return { responsive: true, maintainAspectRatio: false, animation: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${yFmt ? yFmt(ctx.raw) : ctx.raw}` } } }, scales: { x: { ticks: { maxTicksLimit: 10, color: TICK, font: TF }, grid: { display: false } }, y: { ticks: { callback: yFmt || (v => v), color: TICK, font: TF }, grid: { color: GRID } } } } }
+    function lineOpts(yFmt) { return { responsive: true, maintainAspectRatio: false, animation: false, plugins: { legend: { display: false }, datalabels: { display: false }, tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${yFmt ? yFmt(ctx.raw) : ctx.raw}` } } }, scales: { x: { ticks: { maxTicksLimit: 10, color: TICK, font: TF }, grid: { display: false } }, y: { ticks: { callback: yFmt || (v => v), color: TICK, font: TF }, grid: { color: GRID } } } } }
 
     function buildByDate(data) {
       const byDate = {};
@@ -1189,7 +1189,7 @@
       };
     }
     function cmpOpts(yFmt, extra) {
-      const base = { responsive: true, maintainAspectRatio: false, animation: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${yFmt ? yFmt(ctx.raw) : ctx.raw}` } } }, scales: { x: { ticks: { maxTicksLimit: 8, color: TICK, font: TFS }, grid: { display: false } }, y: { ticks: { callback: yFmt || (v => v), color: TICK, font: TFS }, grid: { color: GRID } } } };
+      const base = { responsive: true, maintainAspectRatio: false, animation: false, plugins: { legend: { display: false }, datalabels: { display: false }, tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${yFmt ? yFmt(ctx.raw) : ctx.raw}` } } }, scales: { x: { ticks: { maxTicksLimit: 8, color: TICK, font: TFS }, grid: { display: false } }, y: { ticks: { callback: yFmt || (v => v), color: TICK, font: TFS }, grid: { color: GRID } } } };
       return extra ? { ...base, ...extra, scales: { ...base.scales, ...(extra.scales || {}) } } : base;
     }
     function renderCmpCharts(sA, sB, lA, lB) {
