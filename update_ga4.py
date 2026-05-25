@@ -96,7 +96,7 @@ def run():
                         origem_agrupada = "Direct"
                     elif "insider" in sm_lower and "insite" in sm_lower:
                         origem_agrupada = "Organic"
-                    elif "insider" in sm_lower or "architect" in sm_lower or "email" in sm_lower or "notification" in sm_lower or "web_push" in sm_lower or "pushnews" in sm_lower or "mobile_messaging" in sm_lower or "sms" in sm_lower or "firebase" in sm_lower:
+                    elif "insider" in sm_lower or "pushnews" in sm_lower or "firebase" in sm_lower:
                         origem_agrupada = "CRM"
                     elif "insite" in sm_lower or "emkt" in sm_lower or "whatsapp" in sm_lower:
                         origem_agrupada = "Others"
